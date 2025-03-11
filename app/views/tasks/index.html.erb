@@ -1,0 +1,14 @@
+<h1 class="text-2xl font-bold text-blue-500">To-Do List</h1>
+<%= link_to "New Task", new_task_path %>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <strong><%= task.title %></strong> - <%= task.description %> 
+      [<%= task.completed ? "✔️ Completed" : "❌ Pending" %>]
+      <%= link_to "Edit", edit_task_path(task) %> | 
+      <%= link_to "Delete", task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+
+    </li>
+  <% end %>
+</ul>
